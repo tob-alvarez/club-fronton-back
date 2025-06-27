@@ -14,7 +14,7 @@ const app = express();
 app.use(morgan("dev"));
 
 app.use(cors({
-    origin: "http://localhost:3000", // dominio del frontend
+    origin: "https://v0-fronton-accounting-jonl1o9qo-tobias-alvarezs-projects.vercel.app/", // dominio del frontend
     credentials: true,
 }));
 
