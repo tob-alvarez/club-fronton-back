@@ -1,0 +1,34 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Usuario {
+  id        Int      @id @default(autoincrement())
+  email     String   @unique
+  password  String
+  rol       String   @default("tesorero")
+  movimientos Movimiento[]
+}
+
+model Movimiento {
+  id          Int      @id @default(autoincrement())
+  fecha       DateTime
+  monto       Float
+  tipo        String   // ingreso o egreso
+  categoriaId Int
+  categoria   Categoria @relation(fields: [categoriaId], references: [id])
+  descripcion String
+  usuario     Usuario  @relation(fields: [usuarioId], references: [id])
+  usuarioId   Int
+}
+
+model Categoria {
+  id          Int       @id @default(autoincrement())
+  nombre      String
+  movimientos Movimiento[]
+}
