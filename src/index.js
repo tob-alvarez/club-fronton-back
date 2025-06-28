@@ -13,10 +13,22 @@ const app = express();
 
 app.use(morgan("dev"));
 
+const allowedOrigins = [
+    "https://v0-fronton-accounting-jonl1o9qo-tobias-alvarezs-projects.vercel.app",
+    "http://localhost:3000"
+];
+
 app.use(cors({
-    origin: "https://v0-fronton-accounting-jonl1o9qo-tobias-alvarezs-projects.vercel.app/", // dominio del frontend
+    origin: function (origin, callback) {
+    if (!origin || allowedOrigins.includes(origin)) {
+        callback(null, true);
+    } else {
+        callback(new Error("Not allowed by CORS: " + origin));
+    }
+    },
     credentials: true,
 }));
+
 
 app.use(cookieParser());
 app.use(express.json());
