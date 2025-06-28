@@ -38,6 +38,7 @@ export const listarMovimientos = async (req, res) => {
     })
     res.json(movimientos)
   } catch (err) {
+    console.error(err)
     res.status(500).json({ error: "Error al obtener movimientos" })
   }
 }
@@ -94,6 +95,7 @@ export const actualizarMovimiento = async (req, res) => {
     })
     res.json(actualizado)
   } catch (err) {
+    console.error(err)
     res.status(500).json({ error: "Error al actualizar movimiento" })
   }
 }
@@ -105,6 +107,7 @@ export const eliminarMovimiento = async (req, res) => {
     await prisma.movimiento.delete({ where: { id: parseInt(id) } });
     res.json({ message: "Movimiento eliminado" });
   } catch (err) {
+    console.error(err);
     res.status(500).json({ error: "Error al eliminar movimiento" });
   }
 };

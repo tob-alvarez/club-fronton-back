@@ -21,6 +21,7 @@ export const register = async (req, res) => {
 
     res.status(201).json({ message: "Usuario creado" });
   } catch (err) {
+    console.log(err);
     res.status(500).json({ error: "Error al registrar usuario" });
   }
 };
@@ -49,6 +50,7 @@ export const login = async (req, res) => {
 
     res.json({ message: "Login exitoso" });
   } catch (err) {
+    console.log(err);
     res.status(500).json({ error: "Error al iniciar sesión" });
   }
 };
