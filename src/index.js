@@ -14,7 +14,7 @@ const app = express();
 app.use(morgan("dev"));
 
 const allowedOrigins = [
-    "https://v0-fronton-accounting-jonl1o9qo-tobias-alvarezs-projects.vercel.app",
+    "https://fronton-tesoreria-app.vercel.app/",
     "http://localhost:3000"
 ];
 
