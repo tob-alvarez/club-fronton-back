@@ -4,7 +4,7 @@ const prisma = new PrismaClient();
 
 export const crearMovimiento = async (req, res) => {
   const { descripcion, fecha, monto, tipo, categoriaId } = req.body
-  const usuarioId = req.usuarioId // viene del middleware
+  const usuarioId = 1
   
   if (!usuarioId) {
     return res.status(401).json({ error: "Usuario no autenticado" });
