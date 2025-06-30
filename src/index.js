@@ -13,20 +13,14 @@ const app = express();
 
 app.use(morgan("dev"));
 
-const allowedOrigins = [
-    "https://fronton-tesoreria-app.vercel.app/",
-    "http://localhost:3000"
-];
+// const allowedOrigins = [
+//     "https://fronton-tesoreria-app.vercel.app",
+//     "http://localhost:3000"
+// ];
 
 app.use(cors({
-    origin: function (origin, callback) {
-    if (!origin || allowedOrigins.includes(origin)) {
-        callback(null, true);
-    } else {
-        callback(new Error("Not allowed by CORS: " + origin));
-    }
-    },
-    credentials: true,
+  origin: true,          // refleja dinámicamente el origin que hace la petición
+  credentials: true      // si usás cookies o headers de autenticación
 }));
 
 
