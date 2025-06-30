@@ -10,11 +10,11 @@ import { verificarToken } from "../middleware/authMiddleware.js";
 
 const router = express.Router();
 
-router.post("/", verificarToken, crearMovimiento);
-router.get("/", verificarToken, listarMovimientos);
-router.get("/historico", verificarToken, listarMovimientosHistorico);
-router.put("/:id", verificarToken, actualizarMovimiento);
-router.delete("/:id", verificarToken, eliminarMovimiento);
+router.post("/", crearMovimiento);
+router.get("/", listarMovimientos);
+router.get("/historico", listarMovimientosHistorico);
+router.put("/:id", actualizarMovimiento);
+router.delete("/:id", eliminarMovimiento);
 
 
 export default router;
